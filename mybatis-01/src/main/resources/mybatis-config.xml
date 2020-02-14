@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="config.properties"/>
+    <typeAliases>
+     <!--   <typeAlias type="bat.ke.qq.com.mybatis.pojo.User" alias="xxoo"></typeAlias>-->
+        <package name="bat.ke.qq.com.mybatis.pojo"></package>
+    </typeAliases>
+
+   <!--<typeHandlers>
+        <typeHandler handler="bat.ke.qq.com.mybatis.hander.BatTypeHandler" jdbcType="VARCHAR" javaType="date"></typeHandler>
+    </typeHandlers>-->
+    <plugins>
+        <plugin interceptor="bat.ke.qq.com.mybatis.plugin.SqlPrintInterceptor"></plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--<mapper resource="mybatis/UserMapper.xml"/>-->
+            <mapper class="bat.ke.qq.com.mybatis.mapper.UserMapper"></mapper>
+        <!--<mapper class="bat.ke.qq.com.generator.mapper.UserMapper"></mapper>-->
+        <!--<package name="bat.ke.qq.com.generator.mapper"></package>-->
+        <!--<mapper resource="mybatis/UserMapper.xml"/>
+        <mapper resource="UserMapper.xml"/>-->
+    </mappers>
+</configuration>
